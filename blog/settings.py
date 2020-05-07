@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'django_summernote',
     'perfil',
     'posts',
+    'crispy_forms',
     'categorias',
     'comentarios',
     'django.contrib.admin',

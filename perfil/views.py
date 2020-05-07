@@ -5,6 +5,7 @@ from django.views import View
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from .forms import PerfilForm
 import copy
 
 from . import models
@@ -12,11 +13,18 @@ from . import forms
 
 # Create your views here.
 
+
+
 class BasePerfil(View):
+    form_class = PerfilForm
     template_name = 'perfil/criar.html'
 
     def setup(self, *args, **kwargs):
         super().setup(*args, **kwargs)
+
+    def get(self, request, *args, **kwargs):
+        form = self.form_class()
+        return render(request, self.template_name, {'form': form})
 
 class Criar(BasePerfil):
     def post(self, *args, **kwargs):
